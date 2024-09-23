@@ -78,7 +78,6 @@ public class ExperienceServiceImpl implements ExperienceService {
         } catch (DataIntegrityViolationException e) {
             throw new DatabaseException("Data integrity violation");
         }
-
     }
 }
 

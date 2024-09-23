@@ -8,7 +8,6 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface ExperienceMapper {
-    ExperienceMapper INSTANCE = Mappers.getMapper(ExperienceMapper.class);
 
     ExperienceResponse responseToDto(Experience entity);
 
