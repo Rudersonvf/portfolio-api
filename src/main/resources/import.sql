@@ -12,3 +12,8 @@ INSERT INTO tb_experience(position, company, description, start_date, end_date) 
 
 -- Insert Education
 INSERT INTO tb_education(course_name, institution, description, certificate_url, workload, start_date, end_date) VALUES('Desenvolvedor Moderno', 'Devsuperior', 'Na jornada os seguintes cursos foram concluídos: 1. Lógica de programação; 2. Git e Github; 3. HTML e CSS; 4. Programação Moderna; 5. Banco de Dados; 6. Análise de Sistemas; 7. Ambiente de Desenvolvimento; 8. Back End; 9. JavaScript; 10. Front end.', 'https://learn.devsuperior.com/certificados/7774880', 650, '2022-09-01', '2023-09-01');
+
+-- Insert Skills
+INSERT INTO tb_skill(name, icon_url, doc_url, level) VALUES('java script', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg', 'https://docs.oracle.com/en/java/', 60 );
+INSERT INTO tb_skill(name, icon_url, doc_url, level) VALUES('java', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg', 'https://docs.oracle.com/en/java/', 70 );
+INSERT INTO tb_skill(name, icon_url, doc_url, level) VALUES('python', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', 'https://docs.oracle.com/en/java/', 50 );
