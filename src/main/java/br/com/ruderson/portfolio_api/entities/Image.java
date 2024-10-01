@@ -1,5 +1,6 @@
 package br.com.ruderson.portfolio_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 

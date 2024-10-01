@@ -1,4 +1,4 @@
-package br.com.ruderson.portfolio_api.services;
+package br.com.ruderson.portfolio_api.services.impl;
 
 import br.com.ruderson.portfolio_api.entities.Role;
 import br.com.ruderson.portfolio_api.entities.User;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;

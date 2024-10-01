@@ -2,13 +2,16 @@ package br.com.ruderson.portfolio_api.controllers;
 
 import br.com.ruderson.portfolio_api.dto.project.ProjectDTO;
 import br.com.ruderson.portfolio_api.dto.project.ProjectDetailsProjection;
+import br.com.ruderson.portfolio_api.dto.project.ProjectSummaryProjection;
+import br.com.ruderson.portfolio_api.entities.Project;
 import br.com.ruderson.portfolio_api.services.impl.ProjectServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -20,5 +23,25 @@ public class ProjectController {
     @GetMapping
     public ResponseEntity<List<ProjectDetailsProjection>> findAll(){
         return ResponseEntity.ok(projectService.findAll());
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/summary")
+    public ResponseEntity<List<ProjectSummaryProjection>> findAllSummary(){
+        return ResponseEntity.ok(projectService.findAllProjectedBy());
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/{id}")
+    public ResponseEntity<ProjectDTO> findById(@PathVariable Long id) {
+        ProjectDTO dto = projectService.findById(id);
+        return ResponseEntity.ok(dto);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping
+    public ResponseEntity<ProjectDTO> insert(@RequestBody @Valid ProjectDTO dto) {
+        dto = projectService.insert(dto);
+        return ResponseEntity.created(URI.create("/projects/" + dto.getId())).body(dto);
     }
 }
