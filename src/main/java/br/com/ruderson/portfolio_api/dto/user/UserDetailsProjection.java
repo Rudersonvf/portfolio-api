@@ -1,4 +1,4 @@
-package br.com.ruderson.portfolio_api.projections;
+package br.com.ruderson.portfolio_api.dto.user;
 
 public interface UserDetailsProjection {
     String getUsername();
