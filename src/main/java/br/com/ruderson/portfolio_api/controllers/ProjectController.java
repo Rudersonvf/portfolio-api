@@ -3,7 +3,6 @@ package br.com.ruderson.portfolio_api.controllers;
 import br.com.ruderson.portfolio_api.dto.project.ProjectDTO;
 import br.com.ruderson.portfolio_api.dto.project.ProjectDetailsProjection;
 import br.com.ruderson.portfolio_api.dto.project.ProjectSummaryProjection;
-import br.com.ruderson.portfolio_api.entities.Project;
 import br.com.ruderson.portfolio_api.services.impl.ProjectServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +43,20 @@ public class ProjectController {
         dto = projectService.insert(dto);
         return ResponseEntity.created(URI.create("/projects/" + dto.getId())).body(dto);
     }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("/{id}")
+    public ResponseEntity<ProjectDTO> update(@PathVariable Long id, @RequestBody @Valid ProjectDTO dto) {
+        dto = projectService.update(id, dto);
+        return ResponseEntity.ok(dto);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        projectService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

@@ -1,7 +1,6 @@
 package br.com.ruderson.portfolio_api.dto.image;
 
 import br.com.ruderson.portfolio_api.dto.project.ProjectDTO;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +15,4 @@ public class ImageDTO {
     private Long id;
     @NotBlank(message = "Field required")
     private String url;
-    @JsonIgnore
-    private ProjectDTO project;
-
 }

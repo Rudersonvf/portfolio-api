@@ -3,7 +3,6 @@ package br.com.ruderson.portfolio_api.dto.project;
 import br.com.ruderson.portfolio_api.dto.category.CategoryDTO;
 import br.com.ruderson.portfolio_api.dto.image.ImageDTO;
 import br.com.ruderson.portfolio_api.dto.skill.SkillDTO;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
