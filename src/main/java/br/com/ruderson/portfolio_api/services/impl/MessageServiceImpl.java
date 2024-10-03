@@ -1,6 +1,7 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
 import br.com.ruderson.portfolio_api.dto.MessageDTO;
+import br.com.ruderson.portfolio_api.dto.MessageStatusDto;
 import br.com.ruderson.portfolio_api.projections.MessageSummaryProjection;
 import br.com.ruderson.portfolio_api.entities.Message;
 import br.com.ruderson.portfolio_api.mappers.MessageMapper;
@@ -8,6 +9,7 @@ import br.com.ruderson.portfolio_api.repositories.MessageRepository;
 import br.com.ruderson.portfolio_api.services.MessageService;
 import br.com.ruderson.portfolio_api.services.exceptions.DatabaseException;
 import br.com.ruderson.portfolio_api.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -33,10 +35,12 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public MessageDTO findById(Long id) {
         Message result = messageRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(MSG_NOT_FOUND_ERROR + id));
+        result.setIsRead(true);
+        messageRepository.save(result);
         return messageMapper.toDto(result);
     }
 
@@ -44,7 +48,22 @@ public class MessageServiceImpl implements MessageService {
     @Transactional
     public MessageDTO insert(MessageDTO dto) {
         Message entity = messageMapper.toEntity(dto);
+        entity.setIsRead(false);
         return messageMapper.toDto(messageRepository.save(entity));
+    }
+
+
+    @Override
+    @Transactional
+    public MessageStatusDto switchMessageStatus(Long id, MessageStatusDto dto) {
+        try {
+            Message entity = messageRepository.getReferenceById(id);
+            entity.setIsRead(dto.getIsRead());
+            entity = messageRepository.save(entity);
+            return messageMapper.toUnreadDto(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(MSG_NOT_FOUND_ERROR + id);
+        }
     }
 
     @Override
