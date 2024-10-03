@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.MessageDTO;
+import br.com.ruderson.portfolio_api.dto.MessageDto;
 import br.com.ruderson.portfolio_api.dto.MessageStatusDto;
 import br.com.ruderson.portfolio_api.projections.MessageSummaryProjection;
 import br.com.ruderson.portfolio_api.entities.Message;
@@ -36,7 +36,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     @Transactional
-    public MessageDTO findById(Long id) {
+    public MessageDto findById(Long id) {
         Message result = messageRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(MSG_NOT_FOUND_ERROR + id));
         result.setIsRead(true);
@@ -46,7 +46,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     @Transactional
-    public MessageDTO insert(MessageDTO dto) {
+    public MessageDto insert(MessageDto dto) {
         Message entity = messageMapper.toEntity(dto);
         entity.setIsRead(false);
         return messageMapper.toDto(messageRepository.save(entity));

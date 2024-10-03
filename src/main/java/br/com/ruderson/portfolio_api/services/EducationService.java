@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services;
 
-import br.com.ruderson.portfolio_api.dto.EducationDTO;
+import br.com.ruderson.portfolio_api.dto.EducationDto;
 import br.com.ruderson.portfolio_api.dto.EducationResponse;
 
 import java.util.List;
@@ -10,9 +10,9 @@ public interface EducationService {
 
     EducationResponse findById(Long id);
 
-    EducationDTO insert(EducationDTO dto);
+    EducationDto insert(EducationDto dto);
 
-    EducationDTO update(Long id, EducationDTO dto);
+    EducationDto update(Long id, EducationDto dto);
 
     void deleteById(Long id);
 }

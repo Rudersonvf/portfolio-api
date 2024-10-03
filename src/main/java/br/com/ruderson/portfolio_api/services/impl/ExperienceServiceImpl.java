@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.ExperienceDTO;
+import br.com.ruderson.portfolio_api.dto.ExperienceDto;
 import br.com.ruderson.portfolio_api.dto.ExperienceResponse;
 import br.com.ruderson.portfolio_api.entities.Experience;
 import br.com.ruderson.portfolio_api.mappers.ExperienceMapper;
@@ -44,14 +44,14 @@ public class ExperienceServiceImpl implements ExperienceService {
 
     @Override
     @Transactional
-    public ExperienceDTO insert(ExperienceDTO dto) {
+    public ExperienceDto insert(ExperienceDto dto) {
         Experience entity = experienceMapper.toEntity(dto);
         return experienceMapper.toDto(experienceRepository.save(entity));
     }
 
     @Override
     @Transactional
-    public ExperienceDTO update(Long id, ExperienceDTO dto) {
+    public ExperienceDto update(Long id, ExperienceDto dto) {
         try {
             Experience entity = experienceRepository.getReferenceById(id);
             entity.setPosition(dto.getPosition());

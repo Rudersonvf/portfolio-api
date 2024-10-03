@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.SkillDTO;
+import br.com.ruderson.portfolio_api.dto.SkillDto;
 import br.com.ruderson.portfolio_api.dto.SkillResponse;
 import br.com.ruderson.portfolio_api.entities.Skill;
 import br.com.ruderson.portfolio_api.mappers.SkillMapper;
@@ -44,14 +44,14 @@ public class SkillServiceImpl implements SkillService {
 
     @Override
     @Transactional
-    public SkillDTO insert(SkillDTO dto) {
+    public SkillDto insert(SkillDto dto) {
         Skill entity = skillMapper.toEntity(dto);
         return skillMapper.toDto(skillRepository.save(entity));
     }
 
     @Override
     @Transactional
-    public SkillDTO update(Long id, SkillDTO dto) {
+    public SkillDto update(Long id, SkillDto dto) {
         try {
             Skill entity = skillRepository.getReferenceById(id);
             entity.setName(dto.getName());

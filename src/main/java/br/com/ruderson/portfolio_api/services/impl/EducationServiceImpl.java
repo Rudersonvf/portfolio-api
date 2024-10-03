@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.EducationDTO;
+import br.com.ruderson.portfolio_api.dto.EducationDto;
 import br.com.ruderson.portfolio_api.dto.EducationResponse;
 import br.com.ruderson.portfolio_api.entities.Education;
 import br.com.ruderson.portfolio_api.mappers.EducationMapper;
@@ -44,14 +44,14 @@ public class EducationServiceImpl implements EducationService {
 
     @Override
     @Transactional
-    public EducationDTO insert(EducationDTO dto) {
+    public EducationDto insert(EducationDto dto) {
         Education entity = educationMapper.toEntity(dto);
         return educationMapper.toDto(educationRepository.save(entity));
     }
 
     @Override
     @Transactional
-    public EducationDTO update(Long id, EducationDTO dto) {
+    public EducationDto update(Long id, EducationDto dto) {
         try {
             Education entity = educationRepository.getReferenceById(id);
             entity.setCourseName(dto.getCourseName());

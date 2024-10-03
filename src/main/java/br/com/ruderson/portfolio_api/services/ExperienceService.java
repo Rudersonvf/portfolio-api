@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services;
 
-import br.com.ruderson.portfolio_api.dto.ExperienceDTO;
+import br.com.ruderson.portfolio_api.dto.ExperienceDto;
 import br.com.ruderson.portfolio_api.dto.ExperienceResponse;
 
 import java.util.List;
@@ -10,9 +10,9 @@ public interface ExperienceService {
 
     ExperienceResponse findById(Long id);
 
-    ExperienceDTO insert(ExperienceDTO dto);
+    ExperienceDto insert(ExperienceDto dto);
 
-    ExperienceDTO update(Long id, ExperienceDTO dto);
+    ExperienceDto update(Long id, ExperienceDto dto);
 
     void deleteById(Long id);
 }

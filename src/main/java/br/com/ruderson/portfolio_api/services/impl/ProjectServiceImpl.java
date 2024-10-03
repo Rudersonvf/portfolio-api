@@ -1,11 +1,11 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.CategoryDTO;
-import br.com.ruderson.portfolio_api.dto.ImageDTO;
-import br.com.ruderson.portfolio_api.dto.ProjectDTO;
+import br.com.ruderson.portfolio_api.dto.CategoryDto;
+import br.com.ruderson.portfolio_api.dto.ImageDto;
+import br.com.ruderson.portfolio_api.dto.ProjectDto;
+import br.com.ruderson.portfolio_api.dto.SkillDto;
 import br.com.ruderson.portfolio_api.projections.ProjectDetailsProjection;
 import br.com.ruderson.portfolio_api.projections.ProjectSummaryProjection;
-import br.com.ruderson.portfolio_api.dto.SkillDTO;
 import br.com.ruderson.portfolio_api.entities.Category;
 import br.com.ruderson.portfolio_api.entities.Image;
 import br.com.ruderson.portfolio_api.entities.Project;
@@ -63,7 +63,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     @Transactional(readOnly = true)
-    public ProjectDTO findById(Long id) {
+    public ProjectDto findById(Long id) {
         Project result = projectRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(PROJ_NOT_FOUND_ERROR + id));
         return projectMapper.toDto(result);
@@ -71,7 +71,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     @Transactional
-    public ProjectDTO insert(ProjectDTO dto) {
+    public ProjectDto insert(ProjectDto dto) {
         Project entity = new Project();
         entity.setTitle(dto.getTitle());
         entity.setDescription(dto.getDescription());
@@ -80,7 +80,7 @@ public class ProjectServiceImpl implements ProjectService {
         entity.setCreatedAt(Instant.now());
 
        Set<Image> images = new HashSet<>();
-       for(ImageDTO imgDto : dto.getImages()) {
+       for(ImageDto imgDto : dto.getImages()) {
            Image imgEntity = new Image();
            imgEntity.setUrl(imgDto.getUrl());
            imgEntity.setProject(entity);
@@ -88,8 +88,8 @@ public class ProjectServiceImpl implements ProjectService {
        }
         entity.setImages(images);
 
-        List<Long> categoriesIds = dto.getCategories().stream().map(CategoryDTO::getId).toList();
-        List<Long> skillsIds = dto.getSkills().stream().map(SkillDTO::getId).toList();
+        List<Long> categoriesIds = dto.getCategories().stream().map(CategoryDto::getId).toList();
+        List<Long> skillsIds = dto.getSkills().stream().map(SkillDto::getId).toList();
 
         Set<Category> categories = new HashSet<>(categoryRepository.findAllById(categoriesIds));
         Set<Skill> technologies = new HashSet<>(skillRepository.findAllById(skillsIds));
@@ -104,7 +104,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     @Transactional
-    public ProjectDTO update(Long id, ProjectDTO dto) {
+    public ProjectDto update(Long id, ProjectDto dto) {
         try {
             Project entity = projectRepository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException(PROJ_NOT_FOUND_ERROR + id));
@@ -117,7 +117,7 @@ public class ProjectServiceImpl implements ProjectService {
             entity.getImages().clear();
 
             Set<Image> newImages = new HashSet<>();
-            for (ImageDTO imgDto : dto.getImages()) {
+            for (ImageDto imgDto : dto.getImages()) {
                 Image imgEntity = new Image();
                 imgEntity.setUrl(imgDto.getUrl());
                 imgEntity.setProject(entity);
@@ -126,8 +126,8 @@ public class ProjectServiceImpl implements ProjectService {
 
             entity.getImages().addAll(newImages);
 
-            List<Long> categoriesIds = dto.getCategories().stream().map(CategoryDTO::getId).toList();
-            List<Long> skillsIds = dto.getSkills().stream().map(SkillDTO::getId).toList();
+            List<Long> categoriesIds = dto.getCategories().stream().map(CategoryDto::getId).toList();
+            List<Long> skillsIds = dto.getSkills().stream().map(SkillDto::getId).toList();
 
             Set<Category> categories = new HashSet<>(categoryRepository.findAllById(categoriesIds));
             Set<Skill> technologies = new HashSet<>(skillRepository.findAllById(skillsIds));

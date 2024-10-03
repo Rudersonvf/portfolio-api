@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.CategoryDTO;
+import br.com.ruderson.portfolio_api.dto.CategoryDto;
 import br.com.ruderson.portfolio_api.entities.Category;
 import br.com.ruderson.portfolio_api.mappers.CategoryMapper;
 import br.com.ruderson.portfolio_api.repositories.CategoryRepository;
@@ -27,14 +27,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CategoryDTO> findAll() {
+    public List<CategoryDto> findAll() {
         List<Category> result = categoryRepository.findAll();
         return result.stream().map(categoryMapper::toDto).toList();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public CategoryDTO findById(Long id) {
+    public CategoryDto findById(Long id) {
         Category result = categoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(CAT_NOT_FOUND_ERROR + id));
         return categoryMapper.toDto(result);
@@ -42,7 +42,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional
-    public CategoryDTO insert(CategoryDTO dto) {
+    public CategoryDto insert(CategoryDto dto) {
         Category entity = categoryMapper.toEntity(dto);
         return categoryMapper.toDto(categoryRepository.save(entity));
     }

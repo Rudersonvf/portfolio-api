@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services;
 
-import br.com.ruderson.portfolio_api.dto.SkillDTO;
+import br.com.ruderson.portfolio_api.dto.SkillDto;
 import br.com.ruderson.portfolio_api.dto.SkillResponse;
 
 import java.util.List;
@@ -10,9 +10,9 @@ public interface SkillService {
 
     SkillResponse findById(Long id);
 
-    SkillDTO insert(SkillDTO dto);
+    SkillDto insert(SkillDto dto);
 
-    SkillDTO update(Long id, SkillDTO dto);
+    SkillDto update(Long id, SkillDto dto);
 
     void deleteById(Long id);
 }

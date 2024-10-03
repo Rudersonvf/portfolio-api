@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.controllers;
 
-import br.com.ruderson.portfolio_api.dto.ProjectDTO;
+import br.com.ruderson.portfolio_api.dto.ProjectDto;
 import br.com.ruderson.portfolio_api.projections.ProjectDetailsProjection;
 import br.com.ruderson.portfolio_api.projections.ProjectSummaryProjection;
 import br.com.ruderson.portfolio_api.services.impl.ProjectServiceImpl;
@@ -32,21 +32,21 @@ public class ProjectController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{id}")
-    public ResponseEntity<ProjectDTO> findById(@PathVariable Long id) {
-        ProjectDTO dto = projectService.findById(id);
+    public ResponseEntity<ProjectDto> findById(@PathVariable Long id) {
+        ProjectDto dto = projectService.findById(id);
         return ResponseEntity.ok(dto);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
-    public ResponseEntity<ProjectDTO> insert(@RequestBody @Valid ProjectDTO dto) {
+    public ResponseEntity<ProjectDto> insert(@RequestBody @Valid ProjectDto dto) {
         dto = projectService.insert(dto);
         return ResponseEntity.created(URI.create("/projects/" + dto.getId())).body(dto);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
-    public ResponseEntity<ProjectDTO> update(@PathVariable Long id, @RequestBody @Valid ProjectDTO dto) {
+    public ResponseEntity<ProjectDto> update(@PathVariable Long id, @RequestBody @Valid ProjectDto dto) {
         dto = projectService.update(id, dto);
         return ResponseEntity.ok(dto);
     }

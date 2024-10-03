@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.controllers;
 
-import br.com.ruderson.portfolio_api.dto.EducationDTO;
+import br.com.ruderson.portfolio_api.dto.EducationDto;
 import br.com.ruderson.portfolio_api.dto.EducationResponse;
 import br.com.ruderson.portfolio_api.services.impl.EducationServiceImpl;
 import jakarta.validation.Valid;
@@ -31,14 +31,14 @@ public class EducationController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
-    public ResponseEntity<EducationDTO> insert(@RequestBody @Valid EducationDTO dto) {
-        EducationDTO education = educationService.insert(dto);
+    public ResponseEntity<EducationDto> insert(@RequestBody @Valid EducationDto dto) {
+        EducationDto education = educationService.insert(dto);
         return ResponseEntity.created(URI.create("/educations/" + education.getId())).body(education);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
-    public ResponseEntity<EducationDTO> update(@PathVariable Long id, @RequestBody @Valid EducationDTO dto) {
+    public ResponseEntity<EducationDto> update(@PathVariable Long id, @RequestBody @Valid EducationDto dto) {
         dto = educationService.update(id, dto);
         return ResponseEntity.ok(dto);
     }

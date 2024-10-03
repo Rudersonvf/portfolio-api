@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ImageDTO {
+public class ImageDto {
     private Long id;
     @NotBlank(message = "Field required")
     private String url;

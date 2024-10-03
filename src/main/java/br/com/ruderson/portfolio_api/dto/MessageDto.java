@@ -14,7 +14,7 @@ import java.time.Instant;
 @AllArgsConstructor
 @Getter
 @Setter
-public class MessageDTO {
+public class MessageDto {
     private Long id;
     @NotBlank(message = "Field required")
     @Size(min = 3, max = 80, message = "Between 3 and 80 characters")

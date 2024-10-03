@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ProjectDTO {
+public class ProjectDto {
     private Long id;
     @NotBlank(message = "Field required")
     @Size(min = 3, max = 80, message = "Between 3 and 80 characters")
@@ -26,7 +26,7 @@ public class ProjectDTO {
     private String repositoryUrl;
     private String liveUrl;
     private Instant createdAt;
-    private List<CategoryDTO> categories = new ArrayList<>();
-    private List<SkillDTO> skills = new ArrayList<>();
-    private List<ImageDTO> images = new ArrayList<>();
+    private List<CategoryDto> categories = new ArrayList<>();
+    private List<SkillDto> skills = new ArrayList<>();
+    private List<ImageDto> images = new ArrayList<>();
 }

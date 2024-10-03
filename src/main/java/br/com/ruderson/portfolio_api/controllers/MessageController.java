@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.controllers;
 
-import br.com.ruderson.portfolio_api.dto.MessageDTO;
+import br.com.ruderson.portfolio_api.dto.MessageDto;
 import br.com.ruderson.portfolio_api.dto.MessageStatusDto;
 import br.com.ruderson.portfolio_api.projections.MessageSummaryProjection;
 import br.com.ruderson.portfolio_api.services.impl.MessageServiceImpl;
@@ -27,8 +27,8 @@ public class MessageController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{id}")
-    public ResponseEntity<MessageDTO> findById(@PathVariable Long id) {
-        MessageDTO dto = messageService.findById(id);
+    public ResponseEntity<MessageDto> findById(@PathVariable Long id) {
+        MessageDto dto = messageService.findById(id);
         return ResponseEntity.ok(dto);
     }
 
@@ -41,7 +41,7 @@ public class MessageController {
     }
 
     @PostMapping
-    public ResponseEntity<MessageDTO> insert(@RequestBody @Valid MessageDTO dto) {
+    public ResponseEntity<MessageDto> insert(@RequestBody @Valid MessageDto dto) {
         dto = messageService.insert(dto);
         return ResponseEntity.created(URI.create("/messages/" + dto.getId())).body(dto);
     }

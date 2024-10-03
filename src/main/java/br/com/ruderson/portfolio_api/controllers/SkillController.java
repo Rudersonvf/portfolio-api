@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.controllers;
 
-import br.com.ruderson.portfolio_api.dto.SkillDTO;
+import br.com.ruderson.portfolio_api.dto.SkillDto;
 import br.com.ruderson.portfolio_api.dto.SkillResponse;
 import br.com.ruderson.portfolio_api.services.impl.SkillServiceImpl;
 import jakarta.validation.Valid;
@@ -31,14 +31,14 @@ public class SkillController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
-    public ResponseEntity<SkillDTO> insert(@RequestBody @Valid SkillDTO dto) {
-        SkillDTO skill = skillService.insert(dto);
+    public ResponseEntity<SkillDto> insert(@RequestBody @Valid SkillDto dto) {
+        SkillDto skill = skillService.insert(dto);
         return ResponseEntity.created(URI.create("/experiences/" + skill.getId())).body(skill);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
-    public ResponseEntity<SkillDTO> update(@PathVariable Long id, @RequestBody @Valid SkillDTO dto) {
+    public ResponseEntity<SkillDto> update(@PathVariable Long id, @RequestBody @Valid SkillDto dto) {
         dto = skillService.update(id, dto);
         return ResponseEntity.ok(dto);
     }

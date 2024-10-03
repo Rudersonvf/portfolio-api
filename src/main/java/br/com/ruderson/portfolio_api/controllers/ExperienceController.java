@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.controllers;
 
-import br.com.ruderson.portfolio_api.dto.ExperienceDTO;
+import br.com.ruderson.portfolio_api.dto.ExperienceDto;
 import br.com.ruderson.portfolio_api.dto.ExperienceResponse;
 import br.com.ruderson.portfolio_api.services.impl.ExperienceServiceImpl;
 import jakarta.validation.Valid;
@@ -32,14 +32,14 @@ public class ExperienceController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
-    public ResponseEntity<ExperienceDTO> insert(@RequestBody @Valid ExperienceDTO dto) {
-        ExperienceDTO experience = experienceService.insert(dto);
+    public ResponseEntity<ExperienceDto> insert(@RequestBody @Valid ExperienceDto dto) {
+        ExperienceDto experience = experienceService.insert(dto);
         return ResponseEntity.created(URI.create("/experiences/" + experience.getId())).body(experience);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
-    public ResponseEntity<ExperienceDTO> update(@PathVariable Long id, @RequestBody @Valid ExperienceDTO dto) {
+    public ResponseEntity<ExperienceDto> update(@PathVariable Long id, @RequestBody @Valid ExperienceDto dto) {
         dto = experienceService.update(id, dto);
         return ResponseEntity.ok(dto);
     }

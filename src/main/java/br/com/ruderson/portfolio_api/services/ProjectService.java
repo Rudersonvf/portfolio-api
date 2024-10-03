@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services;
 
-import br.com.ruderson.portfolio_api.dto.ProjectDTO;
+import br.com.ruderson.portfolio_api.dto.ProjectDto;
 import br.com.ruderson.portfolio_api.projections.ProjectDetailsProjection;
 import br.com.ruderson.portfolio_api.projections.ProjectSummaryProjection;
 
@@ -11,11 +11,11 @@ public interface ProjectService {
 
     List<ProjectSummaryProjection> findAllProjectedBy();
 
-    ProjectDTO findById(Long id);
+    ProjectDto findById(Long id);
 
-    ProjectDTO insert(ProjectDTO dto);
+    ProjectDto insert(ProjectDto dto);
 
-    ProjectDTO update(Long id, ProjectDTO dto);
+    ProjectDto update(Long id, ProjectDto dto);
 
     void deleteById(Long id);
 }

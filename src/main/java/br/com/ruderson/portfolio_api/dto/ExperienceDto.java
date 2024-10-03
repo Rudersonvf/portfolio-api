@@ -14,17 +14,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public class EducationDTO {
+public class ExperienceDto {
     private Long id;
     @NotBlank(message = "Field required")
     @Size(min = 3, max = 80, message = "Between 3 and 80 characters")
-    private String courseName;
+    private String position;
     @NotBlank(message = "Field required")
     @Size(min = 3, max = 80, message = "Between 3 and 80 characters")
-    private String institution;
+    private String company;
     private String description;
-    private Integer workload;
-    private String certificateUrl;
     @NotNull(message = "Field required")
     private LocalDate startDate;
     private LocalDate endDate;
