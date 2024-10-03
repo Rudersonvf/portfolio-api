@@ -1,7 +1,7 @@
 package br.com.ruderson.portfolio_api.services;
 
-import br.com.ruderson.portfolio_api.dto.skill.SkillDTO;
-import br.com.ruderson.portfolio_api.dto.skill.SkillResponse;
+import br.com.ruderson.portfolio_api.dto.SkillDTO;
+import br.com.ruderson.portfolio_api.dto.SkillResponse;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package br.com.ruderson.portfolio_api.dto.category;
+package br.com.ruderson.portfolio_api.projections;
 
 public interface CategorySummaryProjection {
     Long getId();

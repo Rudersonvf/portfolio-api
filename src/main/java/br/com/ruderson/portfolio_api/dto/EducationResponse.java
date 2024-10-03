@@ -1,8 +1,4 @@
-package br.com.ruderson.portfolio_api.dto.education;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+package br.com.ruderson.portfolio_api.dto;
 
 import java.time.LocalDate;
 

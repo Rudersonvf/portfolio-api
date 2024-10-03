@@ -1,8 +1,7 @@
 package br.com.ruderson.portfolio_api.repositories;
 
-import br.com.ruderson.portfolio_api.dto.project.ProjectDTO;
-import br.com.ruderson.portfolio_api.dto.project.ProjectDetailsProjection;
-import br.com.ruderson.portfolio_api.dto.project.ProjectSummaryProjection;
+import br.com.ruderson.portfolio_api.projections.ProjectDetailsProjection;
+import br.com.ruderson.portfolio_api.projections.ProjectSummaryProjection;
 import br.com.ruderson.portfolio_api.entities.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,7 +1,7 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.education.EducationDTO;
-import br.com.ruderson.portfolio_api.dto.education.EducationResponse;
+import br.com.ruderson.portfolio_api.dto.EducationDTO;
+import br.com.ruderson.portfolio_api.dto.EducationResponse;
 import br.com.ruderson.portfolio_api.entities.Education;
 import br.com.ruderson.portfolio_api.mappers.EducationMapper;
 import br.com.ruderson.portfolio_api.repositories.EducationRepository;

@@ -1,4 +1,4 @@
-package br.com.ruderson.portfolio_api.dto.project;
+package br.com.ruderson.portfolio_api.projections;
 
 public interface ProjectDetailsProjection {
     Long getId();

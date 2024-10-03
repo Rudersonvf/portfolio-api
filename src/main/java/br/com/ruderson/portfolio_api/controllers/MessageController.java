@@ -1,7 +1,7 @@
 package br.com.ruderson.portfolio_api.controllers;
 
-import br.com.ruderson.portfolio_api.dto.message.MessageDTO;
-import br.com.ruderson.portfolio_api.dto.message.MessageSummaryProjection;
+import br.com.ruderson.portfolio_api.dto.MessageDTO;
+import br.com.ruderson.portfolio_api.projections.MessageSummaryProjection;
 import br.com.ruderson.portfolio_api.services.impl.MessageServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

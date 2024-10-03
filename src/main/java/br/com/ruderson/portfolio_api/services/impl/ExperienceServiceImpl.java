@@ -1,7 +1,7 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.experience.ExperienceDTO;
-import br.com.ruderson.portfolio_api.dto.experience.ExperienceResponse;
+import br.com.ruderson.portfolio_api.dto.ExperienceDTO;
+import br.com.ruderson.portfolio_api.dto.ExperienceResponse;
 import br.com.ruderson.portfolio_api.entities.Experience;
 import br.com.ruderson.portfolio_api.mappers.ExperienceMapper;
 import br.com.ruderson.portfolio_api.repositories.ExperienceRepository;

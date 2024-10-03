@@ -1,8 +1,8 @@
 package br.com.ruderson.portfolio_api.controllers;
 
-import br.com.ruderson.portfolio_api.dto.project.ProjectDTO;
-import br.com.ruderson.portfolio_api.dto.project.ProjectDetailsProjection;
-import br.com.ruderson.portfolio_api.dto.project.ProjectSummaryProjection;
+import br.com.ruderson.portfolio_api.dto.ProjectDTO;
+import br.com.ruderson.portfolio_api.projections.ProjectDetailsProjection;
+import br.com.ruderson.portfolio_api.projections.ProjectSummaryProjection;
 import br.com.ruderson.portfolio_api.services.impl.ProjectServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

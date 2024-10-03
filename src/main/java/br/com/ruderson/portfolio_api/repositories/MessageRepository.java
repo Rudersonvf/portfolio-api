@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.repositories;
 
-import br.com.ruderson.portfolio_api.dto.message.MessageSummaryProjection;
+import br.com.ruderson.portfolio_api.projections.MessageSummaryProjection;
 import br.com.ruderson.portfolio_api.entities.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

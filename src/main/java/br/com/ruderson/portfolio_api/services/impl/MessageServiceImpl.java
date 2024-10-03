@@ -1,7 +1,7 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.message.MessageDTO;
-import br.com.ruderson.portfolio_api.dto.message.MessageSummaryProjection;
+import br.com.ruderson.portfolio_api.dto.MessageDTO;
+import br.com.ruderson.portfolio_api.projections.MessageSummaryProjection;
 import br.com.ruderson.portfolio_api.entities.Message;
 import br.com.ruderson.portfolio_api.mappers.MessageMapper;
 import br.com.ruderson.portfolio_api.repositories.MessageRepository;

@@ -1,8 +1,5 @@
-package br.com.ruderson.portfolio_api.dto.project;
+package br.com.ruderson.portfolio_api.dto;
 
-import br.com.ruderson.portfolio_api.dto.category.CategoryDTO;
-import br.com.ruderson.portfolio_api.dto.image.ImageDTO;
-import br.com.ruderson.portfolio_api.dto.skill.SkillDTO;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;

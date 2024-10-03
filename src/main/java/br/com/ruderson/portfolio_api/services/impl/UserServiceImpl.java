@@ -2,7 +2,7 @@ package br.com.ruderson.portfolio_api.services.impl;
 
 import br.com.ruderson.portfolio_api.entities.Role;
 import br.com.ruderson.portfolio_api.entities.User;
-import br.com.ruderson.portfolio_api.dto.user.UserDetailsProjection;
+import br.com.ruderson.portfolio_api.projections.UserDetailsProjection;
 import br.com.ruderson.portfolio_api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

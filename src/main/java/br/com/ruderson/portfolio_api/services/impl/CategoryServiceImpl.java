@@ -1,6 +1,6 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.category.CategoryDTO;
+import br.com.ruderson.portfolio_api.dto.CategoryDTO;
 import br.com.ruderson.portfolio_api.entities.Category;
 import br.com.ruderson.portfolio_api.mappers.CategoryMapper;
 import br.com.ruderson.portfolio_api.repositories.CategoryRepository;

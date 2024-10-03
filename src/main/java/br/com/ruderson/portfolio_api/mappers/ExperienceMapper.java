@@ -1,15 +1,13 @@
 package br.com.ruderson.portfolio_api.mappers;
 
-import br.com.ruderson.portfolio_api.dto.experience.ExperienceDTO;
-import br.com.ruderson.portfolio_api.dto.experience.ExperienceResponse;
+import br.com.ruderson.portfolio_api.dto.ExperienceDTO;
+import br.com.ruderson.portfolio_api.dto.ExperienceResponse;
 import br.com.ruderson.portfolio_api.entities.Experience;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingConstants;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ExperienceMapper {
-    //ExperienceMapper INSTANCE = Mappers.getMapper(ExperienceMapper.class);
-
     ExperienceResponse responseToDto(Experience entity);
 
     ExperienceDTO toDto(Experience entity);

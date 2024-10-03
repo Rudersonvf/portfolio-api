@@ -1,7 +1,7 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.skill.SkillDTO;
-import br.com.ruderson.portfolio_api.dto.skill.SkillResponse;
+import br.com.ruderson.portfolio_api.dto.SkillDTO;
+import br.com.ruderson.portfolio_api.dto.SkillResponse;
 import br.com.ruderson.portfolio_api.entities.Skill;
 import br.com.ruderson.portfolio_api.mappers.SkillMapper;
 import br.com.ruderson.portfolio_api.repositories.SkillRepository;
@@ -12,6 +12,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -65,7 +66,7 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.SUPPORTS)
     public void deleteById(Long id) {
         if (!skillRepository.existsById(id)) {
             throw new ResourceNotFoundException(SKILL_NOT_FOUND_ERROR + id);

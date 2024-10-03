@@ -1,7 +1,7 @@
 package br.com.ruderson.portfolio_api.controllers;
 
-import br.com.ruderson.portfolio_api.dto.education.EducationDTO;
-import br.com.ruderson.portfolio_api.dto.education.EducationResponse;
+import br.com.ruderson.portfolio_api.dto.EducationDTO;
+import br.com.ruderson.portfolio_api.dto.EducationResponse;
 import br.com.ruderson.portfolio_api.services.impl.EducationServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

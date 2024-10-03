@@ -1,11 +1,11 @@
 package br.com.ruderson.portfolio_api.services.impl;
 
-import br.com.ruderson.portfolio_api.dto.category.CategoryDTO;
-import br.com.ruderson.portfolio_api.dto.image.ImageDTO;
-import br.com.ruderson.portfolio_api.dto.project.ProjectDTO;
-import br.com.ruderson.portfolio_api.dto.project.ProjectDetailsProjection;
-import br.com.ruderson.portfolio_api.dto.project.ProjectSummaryProjection;
-import br.com.ruderson.portfolio_api.dto.skill.SkillDTO;
+import br.com.ruderson.portfolio_api.dto.CategoryDTO;
+import br.com.ruderson.portfolio_api.dto.ImageDTO;
+import br.com.ruderson.portfolio_api.dto.ProjectDTO;
+import br.com.ruderson.portfolio_api.projections.ProjectDetailsProjection;
+import br.com.ruderson.portfolio_api.projections.ProjectSummaryProjection;
+import br.com.ruderson.portfolio_api.dto.SkillDTO;
 import br.com.ruderson.portfolio_api.entities.Category;
 import br.com.ruderson.portfolio_api.entities.Image;
 import br.com.ruderson.portfolio_api.entities.Project;
@@ -29,7 +29,6 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {

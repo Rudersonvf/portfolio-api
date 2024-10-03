@@ -1,4 +1,4 @@
-package br.com.ruderson.portfolio_api.dto.message;
+package br.com.ruderson.portfolio_api.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

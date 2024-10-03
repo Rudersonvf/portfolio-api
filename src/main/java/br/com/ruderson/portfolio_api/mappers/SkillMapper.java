@@ -1,15 +1,13 @@
 package br.com.ruderson.portfolio_api.mappers;
 
-import br.com.ruderson.portfolio_api.dto.skill.SkillDTO;
-import br.com.ruderson.portfolio_api.dto.skill.SkillResponse;
+import br.com.ruderson.portfolio_api.dto.SkillDTO;
+import br.com.ruderson.portfolio_api.dto.SkillResponse;
 import br.com.ruderson.portfolio_api.entities.Skill;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingConstants;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface SkillMapper {
-    SkillMapper INSTANCE = Mappers.getMapper(SkillMapper.class);
-
     SkillResponse entityToResponse(Skill entity);
 
     SkillDTO toDto(Skill entity);

@@ -1,4 +1,4 @@
-package br.com.ruderson.portfolio_api.dto.experience;
+package br.com.ruderson.portfolio_api.dto;
 
 import java.time.LocalDate;
 
