@@ -23,4 +23,5 @@ public class SkillDto {
     private String docUrl;
     @NotNull(message = "Field required")
     private Integer level;
+    private Boolean showAsAbility;
 }

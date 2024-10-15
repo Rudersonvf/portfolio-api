@@ -4,7 +4,6 @@ import br.com.ruderson.portfolio_api.dto.CategoryDto;
 import br.com.ruderson.portfolio_api.dto.ImageDto;
 import br.com.ruderson.portfolio_api.dto.ProjectDto;
 import br.com.ruderson.portfolio_api.dto.SkillDto;
-import br.com.ruderson.portfolio_api.projections.ProjectDetailsProjection;
 import br.com.ruderson.portfolio_api.projections.ProjectSummaryProjection;
 import br.com.ruderson.portfolio_api.entities.Category;
 import br.com.ruderson.portfolio_api.entities.Image;
@@ -51,8 +50,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProjectDetailsProjection> findAll() {
-        return projectRepository.findAllProjectDetails();
+    public List<ProjectDto> findAll() {
+        List<Project> result = projectRepository.findAll();
+        return result.stream().map(projectMapper::toDto).toList();
     }
 
     @Override

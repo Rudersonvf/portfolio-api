@@ -1,7 +1,6 @@
 package br.com.ruderson.portfolio_api.controllers;
 
 import br.com.ruderson.portfolio_api.dto.ProjectDto;
-import br.com.ruderson.portfolio_api.projections.ProjectDetailsProjection;
 import br.com.ruderson.portfolio_api.projections.ProjectSummaryProjection;
 import br.com.ruderson.portfolio_api.services.impl.ProjectServiceImpl;
 import jakarta.validation.Valid;
@@ -20,7 +19,7 @@ public class ProjectController {
     private ProjectServiceImpl projectService;
 
     @GetMapping
-    public ResponseEntity<List<ProjectDetailsProjection>> findAll(){
+    public ResponseEntity<List<ProjectDto>> findAll(){
         return ResponseEntity.ok(projectService.findAll());
     }
 

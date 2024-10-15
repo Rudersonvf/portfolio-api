@@ -20,6 +20,7 @@ public class Skill {
     private String iconUrl;
     private String docUrl;
     private Integer level;
+    private Boolean showAsAbility;
 
     @Override
     public boolean equals(Object o) {

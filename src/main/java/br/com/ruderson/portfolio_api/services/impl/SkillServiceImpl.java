@@ -46,6 +46,9 @@ public class SkillServiceImpl implements SkillService {
     @Transactional
     public SkillDto insert(SkillDto dto) {
         Skill entity = skillMapper.toEntity(dto);
+        if(dto.getShowAsAbility() == null) {
+            entity.setShowAsAbility(false);
+        }
         return skillMapper.toDto(skillRepository.save(entity));
     }
 
@@ -58,6 +61,11 @@ public class SkillServiceImpl implements SkillService {
             entity.setIconUrl(dto.getIconUrl());
             entity.setDocUrl(dto.getDocUrl());
             entity.setLevel(dto.getLevel());
+            if(dto.getShowAsAbility() == null) {
+                entity.setShowAsAbility(false);
+            } else {
+                entity.setShowAsAbility(dto.getShowAsAbility());
+            }
             entity = skillRepository.save(entity);
             return skillMapper.toDto(entity);
         } catch (EntityNotFoundException e) {
