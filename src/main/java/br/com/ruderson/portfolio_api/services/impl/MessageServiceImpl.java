@@ -48,6 +48,7 @@ public class MessageServiceImpl implements MessageService {
     @Transactional
     public MessageDto insert(MessageDto dto) {
         Message entity = messageMapper.toEntity(dto);
+        entity.setSendAt(Instant.now());
         entity.setIsRead(false);
         return messageMapper.toDto(messageRepository.save(entity));
     }

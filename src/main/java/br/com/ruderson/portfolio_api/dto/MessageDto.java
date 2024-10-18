@@ -28,7 +28,5 @@ public class MessageDto {
     @NotBlank(message = "Field required")
     @Size(min = 15, max = 500, message = "Between 15 and 500 characters")
     private String message;
-    @NotNull(message = "Sent date and time is required")
-    private Instant sentAt;
     private Boolean isRead;
 }
