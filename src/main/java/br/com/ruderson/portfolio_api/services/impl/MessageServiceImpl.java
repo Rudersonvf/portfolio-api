@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -48,7 +49,7 @@ public class MessageServiceImpl implements MessageService {
     @Transactional
     public MessageDto insert(MessageDto dto) {
         Message entity = messageMapper.toEntity(dto);
-        entity.setSendAt(Instant.now());
+        entity.setSentAt(Instant.now());
         entity.setIsRead(false);
         return messageMapper.toDto(messageRepository.save(entity));
     }
