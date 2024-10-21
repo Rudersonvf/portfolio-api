@@ -28,3 +28,13 @@ jobs:
 
       - name: Push docker image
         run: docker push rudersonvf/portfolio_api
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull img from docker hub
+        run: docker pull rudersonvf/portfolio_api:latest
+
+      - name: Run docker container
+        run: docker run -d --name deploy_portfolio -p 8080:8080 rudersonvf/portfolio_api
