@@ -21,7 +21,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Docker login
-        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build docker image
         run: docker build -t rudersonvf/portfolio_api .
@@ -33,12 +33,18 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-      - name: Pull img from docker hub
+      - name: Pull image from Docker Hub
         run: docker pull rudersonvf/portfolio_api:latest
 
-      - name: Run docker container
+      - name: Remove existing container if it exists
+        run: |
+          if [ "$(docker ps -aq -f name=deploy_portfolio)" ]; then
+            docker rm -f deploy_portfolio
+          fi
+
+      - name: Run Docker container
         run: |
           docker run -d --name deploy_portfolio \
           -p 8080:8080 \
-          -e APP_PROFILE=${{secrets.APP_PROFILE}} \
+          -e APP_PROFILE=${{ secrets.APP_PROFILE }} \
           rudersonvf/portfolio_api
