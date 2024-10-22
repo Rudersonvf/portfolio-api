@@ -47,4 +47,7 @@ jobs:
           docker run -d --name deploy_portfolio \
           -p 8080:8080 \
           -e APP_PROFILE=${{ secrets.APP_PROFILE }} \
+          -e DB_URL=${{ secrets.PG_DB_URL }} \
+          -e DB_USERNAME=${{ secrets.PG_DB_USERNAME }} \
+          -e DB_PASSWORD=${{ secrets.PG_DB_PASSWORD }} \
           rudersonvf/portfolio_api
