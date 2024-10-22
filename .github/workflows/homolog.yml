@@ -1,0 +1,43 @@
+name: CI/CD - Homolog - Pipeline
+
+on:
+  push:
+    branches: [staging]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Build project
+        run: mvn clean install -DskipTests
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start PostgreSQL container
+        run: |
+          docker run --name portfolio-homolog-db -e POSTGRES_USER=homologuser -e POSTGRES_PASSWORD=123456789 -e POSTGRES_DB=homolog-db -p 5432:5432 -d postgres
+
+      - name: Restore DB from dump
+        run: |
+          cat portfolio_dump.sql | docker exec -i portfolio-homolog-db psql -U homologuser -d portfolio-db
+
+      - name: Run application
+        run: |
+          docker run -d --name deploy_portfolio_homolog \
+          -p 8081:8080 \
+          -e SPRING_DATASOURCE_URL=jdbc:postgresql://portfolio-homolog-db:5432/portfolio-db \
+          -e SPRING_DATASOURCE_USERNAME=homologuser \
+          -e SPRING_DATASOURCE_PASSWORD=123456789 \
+          -e APP_PROFILE=homolog \
+          rudersonvf/portfolio_api
