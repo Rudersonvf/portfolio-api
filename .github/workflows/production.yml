@@ -50,5 +50,5 @@ jobs:
           -e DB_URL=${{ secrets.PG_DB_URL }} \
           -e DB_USERNAME=${{ secrets.PG_DB_USERNAME }} \
           -e DB_PASSWORD=${{ secrets.PG_DB_PASSWORD }} \
-          -e CORS_ORIGINS=${{ secrets.CORS }}
+          -e CORS_ORIGINS=${{ secrets.CORS }} \
           rudersonvf/portfolio_api
