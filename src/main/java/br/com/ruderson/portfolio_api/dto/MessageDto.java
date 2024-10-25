@@ -26,7 +26,7 @@ public class MessageDto {
     @Size(min = 3, max = 120, message = "Between 3 and 120 characters")
     private String subject;
     @NotBlank(message = "Field required")
-    @Size(min = 15, max = 500, message = "Between 15 and 500 characters")
+    @Size(min = 15, max = 800, message = "Between 15 and 800 characters")
     private String message;
     private Boolean isRead;
 }

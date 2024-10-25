@@ -21,7 +21,7 @@ public class ProjectDto {
     @Size(min = 3, max = 80, message = "Between 3 and 80 characters")
     private String title;
     @NotBlank(message = "Field required")
-    @Size(min = 30, max = 500, message = "Between 30 and 500 characters")
+    @Size(min = 30, max = 500, message = "Between 30 and 700 characters")
     private String description;
     private String repositoryUrl;
     private String liveUrl;
