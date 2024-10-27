@@ -23,6 +23,7 @@ public class Visitor {
     private Double timeSpent;
     private String browser;
     private String device;
+    private String ipAddress;
 
     @Override
     public boolean equals(Object o) {

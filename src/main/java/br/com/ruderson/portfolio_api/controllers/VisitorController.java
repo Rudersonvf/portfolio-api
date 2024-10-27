@@ -1,8 +1,8 @@
 package br.com.ruderson.portfolio_api.controllers;
 
 import br.com.ruderson.portfolio_api.dto.VisitorDto;
-import br.com.ruderson.portfolio_api.entities.Visitor;
 import br.com.ruderson.portfolio_api.services.impl.VisitorServiceImpl;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,8 @@ public class VisitorController {
     }
 
     @PostMapping
-    public ResponseEntity<VisitorDto> insert(@RequestBody @Valid VisitorDto dto) {
+    public ResponseEntity<VisitorDto> insert(@RequestBody @Valid VisitorDto dto, HttpServletRequest request) {
+        dto.setIpAddress(request.getRemoteAddr());
         VisitorDto visitor = visitorService.insert(dto);
         return ResponseEntity.created(URI.create("/experiences/" + visitor.getId())).body(visitor);
     }

@@ -17,4 +17,5 @@ public class VisitorDto {
     private Double timeSpent;
     private String browser;
     private String device;
+    private String ipAddress;
 }
