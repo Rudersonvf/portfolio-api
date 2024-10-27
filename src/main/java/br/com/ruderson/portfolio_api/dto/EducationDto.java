@@ -22,6 +22,7 @@ public class EducationDto {
     @NotBlank(message = "Field required")
     @Size(min = 3, max = 80, message = "Between 3 and 80 characters")
     private String institution;
+    @Size(min = 15, max = 700, message = "Between 15 and 700 characters")
     private String description;
     private Integer workload;
     private String certificateUrl;
