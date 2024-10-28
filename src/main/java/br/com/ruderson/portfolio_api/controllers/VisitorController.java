@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/visitors")
 public class VisitorController {
+    
     @Autowired
     VisitorServiceImpl visitorService;
 
@@ -25,12 +26,18 @@ public class VisitorController {
     @PostMapping
     public ResponseEntity<VisitorDto> insert(@RequestBody @Valid VisitorDto dto, HttpServletRequest request) {
         String ipAddress = request.getHeader("X-Forwarded-For");
-        if (ipAddress == null) {
+        
+        if (ipAddress == null || ipAddress.isEmpty()) {
+            ipAddress = request.getHeader("X-Real-IP");
+        }
+        
+        if (ipAddress == null || ipAddress.isEmpty()) {
             ipAddress = request.getRemoteAddr();
         }
 
-        dto.setIpAddress(request.getRemoteAddr());
+        dto.setIpAddress(ipAddress);
+        
         VisitorDto visitor = visitorService.insert(dto);
-        return ResponseEntity.created(URI.create("/experiences/" + visitor.getId())).body(visitor);
+        return ResponseEntity.created(URI.create("/api/visitors/" + visitor.getId())).body(visitor);
     }
 }
