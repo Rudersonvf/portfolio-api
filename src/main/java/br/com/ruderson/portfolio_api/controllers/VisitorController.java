@@ -24,6 +24,11 @@ public class VisitorController {
 
     @PostMapping
     public ResponseEntity<VisitorDto> insert(@RequestBody @Valid VisitorDto dto, HttpServletRequest request) {
+        String ipAddress = request.getHeader("X-Forwarded-For");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
+
         dto.setIpAddress(request.getRemoteAddr());
         VisitorDto visitor = visitorService.insert(dto);
         return ResponseEntity.created(URI.create("/experiences/" + visitor.getId())).body(visitor);
