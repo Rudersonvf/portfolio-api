@@ -6,6 +6,7 @@ import br.com.ruderson.portfolio_api.services.impl.SkillServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +46,14 @@ public class SkillController {
         return ResponseEntity.ok(dto);
     }
 
-    @Operation(summary = "Create a new skill record", method = "POST")
+    @Operation(
+            summary = "Create a new skill record",
+            method = "POST",
+            security = @SecurityRequirement(name = "bearerAuth")
+    )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Successfully created the skill record"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
             @ApiResponse(responseCode = "422", description = "Invalid data"),
             @ApiResponse(responseCode = "500", description = "Internal server error"),
     })
@@ -58,9 +64,14 @@ public class SkillController {
         return ResponseEntity.created(URI.create("/experiences/" + skill.getId())).body(skill);
     }
 
-    @Operation(summary = "Update a skill record", method = "PUT")
+    @Operation(
+            summary = "Update a skill record by its ID",
+            method = "PUT",
+            security = @SecurityRequirement(name = "bearerAuth")
+    )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully updated the skill record"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
             @ApiResponse(responseCode = "404", description = "Skill record not found"),
             @ApiResponse(responseCode = "422", description = "Invalid data"),
             @ApiResponse(responseCode = "500", description = "Internal server error"),
@@ -72,10 +83,14 @@ public class SkillController {
         return ResponseEntity.ok(dto);
     }
 
-    @Operation(summary = "Delete a skill record by its ID", method = "DELETE")
+    @Operation(summary = "Delete a skill record by its ID",
+            method = "DELETE",
+            security = @SecurityRequirement(name = "bearerAuth")
+    )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Successfully deleted the skill record"),
             @ApiResponse(responseCode = "400", description = "Data integrity violation"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
             @ApiResponse(responseCode = "404", description = "Skill record not found"),
             @ApiResponse(responseCode = "500", description = "Internal server error"),
     })
