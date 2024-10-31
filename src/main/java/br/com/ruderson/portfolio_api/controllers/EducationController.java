@@ -3,6 +3,10 @@ package br.com.ruderson.portfolio_api.controllers;
 import br.com.ruderson.portfolio_api.dto.EducationDto;
 import br.com.ruderson.portfolio_api.dto.EducationResponse;
 import br.com.ruderson.portfolio_api.services.impl.EducationServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +18,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/educations")
+@Tag(name = "Education")
 public class EducationController {
     @Autowired
     private EducationServiceImpl educationService;
 
+    @Operation(summary = "Retrieve all educations records", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved list of educations"),
+            @ApiResponse(responseCode = "500", description = "Internal server error"),
+    })
     @GetMapping
     public ResponseEntity<List<EducationResponse>> findAll() {
         return ResponseEntity.ok(educationService.findAll());
